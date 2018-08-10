@@ -228,5 +228,6 @@ else
 	echo "config.h is unchanged"
 fi
 
+mkdir -p obj
 rm -f $TMPO $TMPC $TMPS $TMPH
 
