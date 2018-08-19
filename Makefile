@@ -6,7 +6,7 @@ include config.mak
 
 SRCDIR = src
 OBJDIR = obj
-BINDIR = bin
+BINDIR = lib
 TARGET = lib/liblinAlg.a
 
 CCFILES1 = $(wildcard $(SRCDIR)/*/*.cc)
@@ -22,6 +22,7 @@ INCLDIRS = -I$(SRCDIR)
 
 #build the library
 $(TARGET): $(OBJS)
+	mkdir -p $(BINDIR)
 	ar r $@ $?
 	chmod 755 $@
 	ranlib $@
@@ -46,7 +47,8 @@ copyheaders:
 mrproper: clean
 	rm -f config.h config.mak
 
-clean:	
+clean:
+	rm -f $(TARGET)
 	rm -rf */*.o
 
 
